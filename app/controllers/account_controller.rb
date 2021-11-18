@@ -5,7 +5,7 @@ def sign_up
     if request.post?
         @new_user = User.new(user_params)
         if @new_user.save
-            UserMailer.sign_up_confirmation(@user).deliver
+            UserMailer.sign_up_confirmation(@new_user).deliver
             flash[:notice] = "Account is created. Check your email"
             redirect_to :action=>:login
         else
