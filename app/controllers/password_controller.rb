@@ -6,10 +6,10 @@ class PasswordController < ApplicationController
     if request.post?
 			@user = User.find_by_email(params[:email])
 			if @user
-			   @new_password = random_password
-			   @user.update(:password=>@new_password)
+			   new_password = random_password
+			   @user.update(:password=>new_password)
 			   flash[:notice] = "A new password has been sent your email"
-			   UserMailer.random_password_send(@user,@new_password).deliver
+			   UserMailer.random_password_send(@user,new_password).deliver
 			   redirect_to :action=>"login",:controller=>"account"
 			else
 			   flash[:alert]="Invalid Email.Please enter correct email"

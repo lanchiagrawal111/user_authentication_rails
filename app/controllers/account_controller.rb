@@ -42,4 +42,5 @@ end
   def user_params
       params.require(:user).permit(:first_name, :last_name, :date_of_birth, :mobile, :email ,:password, :hashed_password)
   end
+
 end
