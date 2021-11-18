@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd; margin:10px">
+  <a class="navbar-brand" href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
+ 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+     <% if session[:user] %>
+      <li class="nav-item active">
+         <span class="nav-link"><%=@user.email%></span>
+      </li>
+       <% else %>
+       <li class="nav-item active">
+         <span class="nav-link">User Auth</span>
+      </li>
+      <% end %>
+    </ul>
+    
+    <div class="navbar-end">
+      <div class="navbar-item">
+                <% if session[:user] %>
+                <%= link_to('Logout', { action: 'logout', controller: 'account'},    class: 'btn btn-danger') %> 
+                <%= link_to('Reset Password', { action: 'reset_password', controller: 'password'},    class: 'btn btn-success') %> 
+                <%= link_to('Edit Profile', { action: 'edit_profile', controller: 'profile'},    class: 'btn btn-success') %> 
+                <% else %>
+          <%= link_to('Sign Up', { action: 'sign_up', controller: 'account'},  class: 'btn btn-primary active') %>
+			    <%= link_to('Sign In', { action: 'login', controller: 'account'},    class: 'btn btn-success') %> 
+                <% end %>
+      </div>
+    </div>
+  </div>
+</nav>
